@@ -27,8 +27,8 @@
 (require 'clojure-mode)
 
 ;;common lisp
-(add-to-list 'load-path "~/emacs/site-lisp")
-(require 'cl-lib)
+;;(add-to-list 'load-path "~/emacs/site-lisp")
+;;(require 'cl-lib)
 
 ;;java
 (require 'eclim)
@@ -43,10 +43,10 @@
 ;;(help-at-pt-set-timer)
 
 ;; regular auto-complete initialization
-(require 'auto-complete-config)
-(ac-config-default)
-(add-to-list 'ac-dictionary-directories "~/emacs/site-lisp/auto-complete-1.3.1/dict")
-(set-cursor-color "#ffffff")
+;;(require 'auto-complete-config)
+;;(ac-config-default)
+;;(add-to-list 'ac-dictionary-directories "~/emacs/site-lisp/auto-complete-1.3.1/dict")
+;;(set-cursor-color "#ffffff")
 
 (add-to-list 'load-path "~/emacs/site-list/company-mode")
 (autoload 'company-mode "company" nil t)

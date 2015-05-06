@@ -1,6 +1,6 @@
 ;;asciidoc mode
-(add-to-list 'auto-mode-alist '("\\.adoc$" . doc-mode))
-(autoload 'doc-mode "doc-mode")
+(add-to-list 'auto-mode-alist '("\\.adoc$" . adoc-mode))
+(autoload 'adoc-mode "adoc-mode")
 
 ;;haml
 (require 'haml-mode)
