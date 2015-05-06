@@ -6,47 +6,22 @@
 	(foreground-color . "wheat")
 ))
 
-;; Set up load path
 (defvar home-dir)
 (setq home-dir (concat (expand-file-name "~") "/"))
 (setq load-path (append (list (concat home-dir "")
 			      (concat home-dir "site-lisp"))
                         load-path))
 
+;; bind them
+(global-set-key [(control kp-add)] 'previous-buffer)
+(global-set-key [(control kp-subtract)] 'next-buffer)
+(global-set-key [f2] 'other-window)       ;convenient shortcuts.
+(global-set-key [f3] 'kill-this-buffer)
+
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 
-(global-set-key [f2] 'other-window)       ;convenient shortcuts.
-(global-set-key [f3] 'kill-this-buffer)
-
-(require 'ebuff-menu)
-(define-key global-map                    [f12] 'electric-buffer-list)
-(define-key electric-buffer-menu-mode-map [f12] 'Electric-buffer-menu-quit)
-
-;; next- and previous-buffer
-(defalias 'next-buffer 'bury-buffer)
-(defun previous-buffer () "switches to previous buffer"
-  (interactive)
-  (while (progn
-	   (switch-to-buffer (car (last (buffer-list))))
-	   (string= " " (substring (buffer-name) 0 1)))))
-
-;; bind them
-;;(global-set-key [(control kp-add)] 'previous-buffer)
-(global-set-key (kbd "C-+") 'previous-buffer)
-(global-set-key (kbd "C--") 'next-buffer)
-
-;;visual basic
-(autoload 'visual-basic-mode "visual-basic-mode" "Visual Basic mode." t)
-(setq auto-mode-alist (append '(("\\.\\(frm\\|bas\\|cls\\)$" . 
-				 visual-basic-mode)) auto-mode-alist))
-
-;;velocity
-(autoload 'turn-on-vtl-mode "vtl" nil t)
-(add-hook 'html-mode-hook 'turn-on-vtl-mode t t)
-(add-hook 'xml-mode-hook 'turn-on-vtl-mode t t)
-(add-hook 'text-mode-hook 'turn-on-vtl-mode t t)
 
 ;;mapserver
 (defvar mapserver-keywords
@@ -71,7 +46,6 @@
 ;; d-mode
 (autoload 'd-mode "d-mode" "Major mode for editing D code." t)
 (add-to-list 'auto-mode-alist '("\\.d[i]?\\'" . d-mode))
-
 ;;ruby
 (autoload 'ruby-mode "ruby-mode"
   "Mode for editing ruby source files" t)
@@ -85,9 +59,9 @@
 (autoload 'inf-ruby-keys "inf-ruby"
   "Set local key defs for inf-ruby in ruby-mode")
 (add-hook 'ruby-mode-hook
-	  '(lambda ()
-	     (inf-ruby-keys)
-	     ))
+          '(lambda ()
+             (inf-ruby-keys)
+			 ))
 
 ;; drag and drop os x
 (define-key global-map [ns-drag-file] 'my-ns-open-files)
@@ -115,3 +89,28 @@
 (require 'epa)
 (epa-file-enable)
 (setq epg-gpg-program "/usr/local/bin/gpg")
+
+(require 'egg)
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(egg-enable-tooltip t))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )
+
+(autoload 'markdown-mode "markdown-mode"
+  "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+(require 'deft)
+(setq deft-extension "md")
+(setq deft-directory "~/Dropbox/notes")
+(setq deft-text-mode 'markdown-mode)
+
+

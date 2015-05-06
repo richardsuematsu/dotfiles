@@ -1,0 +1,11 @@
+;;asciidoc mode
+(add-to-list 'auto-mode-alist '("\\.adoc$" . doc-mode))
+(autoload 'doc-mode "doc-mode")
+
+;;haml
+(require 'haml-mode)
+
+;;markdown
+(autoload 'markdown-mode "markdown-mode"
+  "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
