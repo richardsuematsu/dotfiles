@@ -18,8 +18,8 @@
 			      (concat home-dir "/usr/local/go/misc/emacs"))
                         load-path))
 
-(load-library "screen-config")
 (load-library "package-install")
+(load-library "screen-config")
 (load-library "app-config")
 (load-library "mapserver")
 (load-library "language-config")

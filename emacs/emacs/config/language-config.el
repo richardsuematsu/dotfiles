@@ -18,6 +18,8 @@
           '(lambda ()
              (inf-ruby-keys)
 			 ))
+(add-hook 'ruby-mode-hook 'projectile-mode)
+
 
 ;;golang
 (add-to-list 'load-path "go-mode-load.el" t)
@@ -60,3 +62,4 @@
 ;;(require 'ac-emacs-eclim-source)
 ;;(ac-emacs-eclim-config)
 
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
