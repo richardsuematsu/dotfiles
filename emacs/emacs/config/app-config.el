@@ -26,7 +26,7 @@
  )
 
 (require 'deft)
-(setq deft-extension '("txt" "adoc"))
+(setq deft-extension '("txt" "adoc" "org"))
 (setq deft-directory "~/Dropbox/notes")
 (setq deft-text-mode 'adoc-mode)
 (setq deft-recursive t)
