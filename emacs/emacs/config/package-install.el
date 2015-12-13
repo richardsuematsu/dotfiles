@@ -41,7 +41,7 @@ Return a list of installed packages or nil for every skipped package."
 
 (ensure-package-installed 'clojure-mode 'd-mode 'go-mode 'js2-mode)
 
-(ensure-package-installed 'adoc-mode 'haml-mode 'markdown-mode 'web-mode 'yaml-mode)
+(ensure-package-installed 'adoc-mode 'haml-mode 'lua-mode 'markdown-mode 'web-mode 'yaml-mode)
 
 (ensure-package-installed 'auto-complete 'company 'emacs-eclim 'smart-mode-line)
 
