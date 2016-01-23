@@ -1,0 +1,69 @@
+(setq gnus-select-method 
+      '(nnmaildir "MyCompany" 
+                  (directory "~/Maildir/")
+                  (directory-files nnheader-directory-files-safe) 
+                  (get-new-mail nil)
+		  ))
+
+(setq user-mail-address	"myname@mycompany.com"
+      user-full-name	"myname")
+
+;;(setq-default
+     ;;gnus-summary-line-format "%U%R%z %(%&user-date class="comment">;  %-15,15f  %B%s%)\n"
+     ;;gnus-user-date-format-alist '((t . "%Y-%m-%d %H:%M"))
+     ;;gnus-summary-thread-gathering-function 'gnus-gather-threads-by-references
+     ;;gnus-thread-sort-functions '(gnus-thread-sort-by-date)
+     ;;gnus-sum-thread-tree-false-root ""
+     ;;gnus-sum-thread-tree-indent " "
+     ;;gnus-sum-thread-tree-leaf-with-other "├► "
+     ;;gnus-sum-thread-tree-root ""
+     ;;gnus-sum-thread-tree-single-leaf "╰► "
+     ;;gnus-sum-thread-tree-vertical "│")
+
+(setq gnus-thread-sort-functions '(gnus-thread-sort-by-most-recent-date))
+
+(setq gnus-extra-headers
+      '(To Newsgroups Content-Type))
+(setq nnmail-extra-headers gnus-extra-headers)
+
+(defun gnus-user-format-function-@ (header)
+  "Display @ for message with attachment in summary line.
+  
+You need to add `Content-Type' to `nnmail-extra-headers' and
+`gnus-extra-headers', see Info node `(gnus)To From Newsgroups'."
+  (let ((case-fold-search t)
+        (ctype (or (cdr (assq 'Content-Type (mail-header-extra header)))
+                   "text/plain"))
+        indicator)
+    (when (string-match "^multipart/mixed" ctype)
+      (setq indicator "@"))
+    (if indicator
+        indicator
+      " ")))
+
+(setq-default gnus-user-date-format-alist '((t . "%Y-%m-%d %H:%M")))
+
+(setq-default
+      gnus-summary-line-format "%u@%U%R%z%I%(%[%&user-date; %-23,23f%]%) %s\n")
+
+(setq gnus-message-archive-group "nnmaildir+localhost:Sent Items")
+
+(load "tls")
+(setq send-mail-function 'smtpmail-send-it
+      message-send-mail-function 'smtpmail-send-it
+      starttls-use-gnutls t
+      starttls-gnutls-program "/opt/local/bin/gnutls-cli"
+      starttls-extra-arguments nil      
+      smtpmail-gnutls-credentials '(("smtp.office365.com" 587 nil nil))
+      smtpmail-auth-credentials '(("smtp.office365.com" 587 "myname@mycompany.com" nil ))
+      smtpmail-starttls-credentials '(("smtp.office365.com" 587 "myname@mycompany.com" nil))
+      smtpmail-default-smtp-server "smtp.office365.com"
+      smtpmail-smtp-server "smtp.office365.com"
+      smtpmail-smtp-service 587
+      smtpmail-debug-info t
+      smtpmail-local-domain "mycompany.com")
+
+(define-key gnus-group-mode-map (kbd "vo")
+  '(lambda ()
+     (interactive)
+     (shell-command "offlineimap&" "*offlineimap*" nil)))

@@ -1,0 +1,28 @@
+[general]
+# List of accounts to be synced, separated by a comma.
+accounts = mycompany
+
+[Account mycompany]
+# Identifier for the local repository; e.g. the maildir to be synced via IMAP.
+localrepository = mycompany-local
+# Identifier for the remote repository; i.e. the actual IMAP, usually non-local.
+remoterepository = mycompany-remote
+# Status cache. Default is plain, which eventually becomes huge and slow.
+status_backend = sqlite
+
+[Repository mycompany-local]
+# Currently, offlineimap only supports maildir and IMAP for local repositories.
+type = Maildir
+# Where should the mail be placed?
+localfolders = ~/Maildir
+
+[Repository mycompany-remote]
+# Remote repos can be IMAP or Gmail, the latter being a preconfigured IMAP.
+type = IMAP
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+remotehost = outlook.office365.com
+remoteuser = myname@mycompany.com
+remotepass = 
+remoteport = 993
+ssl = yes
+folderfilter = lambda folder: folder not in ['Calendar','Contacts/Skype for Business Contacts', 'Suggested Contacts']
