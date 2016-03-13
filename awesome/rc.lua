@@ -268,6 +268,9 @@ globalkeys = awful.util.table.join(
     -- Custom program
     awful.key({ modkey,           }, "b", function () awful.util.spawn("chromium") end),
     awful.key({ modkey,           }, "e", function () awful.util.spawn("emacs") end),
+    awful.key({ modkey }, "p", function ()
+    		awful.util.spawn("dmenu_run -i -l 10 -nb '" .. beautiful.bg_normal .. "' -nf '" .. beautiful.fg_normal .. "' -sb '" .. beautiful.bg_focus .. "' -sf '" .. beautiful.fg_focus .. "' -fn lucidasans-14")
+	     end),
     
     -- laptop
 
@@ -414,7 +417,6 @@ end)
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
-
 
 awful.util.spawn_with_shell("nm-applet &")
 awful.util.spawn_with_shell("xscreensaver -nosplash &")
