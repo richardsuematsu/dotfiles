@@ -6,6 +6,7 @@ require("awful.rules")
 require("beautiful")
 -- Notification library
 require("naughty")
+require("volume")
 
 -- Load Debian menu entries
 require("debian.menu")
@@ -192,6 +193,7 @@ for s = 1, screen.count() do
         },
         mylayoutbox[s],
         mytextclock,
+	volume_widget,
 	batterywidget,
         s == 1 and mysystray or nil,
         mytasklist[s],
@@ -262,6 +264,23 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, }, "Up",    function () awful.client.moveresize(  0, -20,   0,   0) end),
     awful.key({ modkey, }, "Left",  function () awful.client.moveresize(-20,   0,   0,   0) end),
     awful.key({ modkey, }, "Right", function () awful.client.moveresize( 20,   0,   0,   0) end),
+
+    -- Custom program
+    awful.key({ modkey,           }, "b", function () awful.util.spawn("chromium") end),
+    awful.key({ modkey,           }, "e", function () awful.util.spawn("emacs") end),
+    
+    -- laptop
+
+    awful.key({ }, "XF86MonBrightnessDown", function ()
+	  awful.util.spawn("xbacklight -dec 15") end),
+    awful.key({ }, "XF86MonBrightnessUp", function ()
+	  awful.util.spawn("xbacklight -inc 15") end),
+    awful.key({ }, "XF86AudioRaiseVolume", function ()
+	  awful.util.spawn("amixer set Master 9%+", false) end),
+    awful.key({ }, "XF86AudioLowerVolume", function ()
+	  awful.util.spawn("amixer set Master 9%-", false) end),
+    awful.key({ }, "XF86AudioMute", function ()
+	  awful.util.spawn("amixer sset Master toggle", false) end),
    
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
@@ -398,3 +417,4 @@ client.add_signal("unfocus", function(c) c.border_color = beautiful.border_norma
 
 
 awful.util.spawn_with_shell("nm-applet &")
+awful.util.spawn_with_shell("dropbox start")

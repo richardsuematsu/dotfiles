@@ -12,7 +12,7 @@ theme.wallpaper_cmd = { "awsetbg /home/rich/.config/awesome/themes/zenburn/backg
 -- }}}
 
 -- {{{ Styles
-theme.font      = "sans 10"
+theme.font      = "sans 12"
 
 -- {{{ Colors
 theme.fg_normal = "#DCDCCC"
