@@ -85,7 +85,7 @@ naughty.config.defaults.position = "top_right"
 naughty.config.defaults.margin = 8
 naughty.config.defaults.gap = 1
 naughty.config.defaults.ontop = true
-naughty.config.defaults.font = "terminus 5"
+naughty.config.defaults.font = "terminus 16"
 naughty.config.defaults.icon = nil
 naughty.config.defaults.icon_size = 256
 naughty.config.defaults.fg = beautiful.fg_tooltip
@@ -506,18 +506,18 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
-    { rule = { class = "Chromium" },
-      properties = { tag = tags[1][3] } },
-    { rule = { class = "Vlc" },
-      properties = { tag = tags[1][6] } },
-    { rule = { class = "VirtualBox" },
-      properties = { tag = tags[1][5] } },
-    { rule = { class = "Gns3" },
-      properties = { tag = tags[1][5] } },
-    { rule = { class = "Bitcoin-qt" },
-      properties = { tag = tags[1][9] } },
-    { rule = { class = "luakit" },
-      properties = { tag = tags[1][2] } },
+    -- { rule = { class = "Chromium" },
+    --   properties = { tag = tags[1][3] } },
+    -- { rule = { class = "Vlc" },
+    --   properties = { tag = tags[1][6] } },
+    -- { rule = { class = "VirtualBox" },
+    --   properties = { tag = tags[1][5] } },
+    -- { rule = { class = "Gns3" },
+    --   properties = { tag = tags[1][5] } },
+    -- { rule = { class = "Bitcoin-qt" },
+    --   properties = { tag = tags[1][9] } },
+    -- { rule = { class = "luakit" },
+    --   properties = { tag = tags[1][2] } },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
