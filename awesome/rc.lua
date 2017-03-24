@@ -590,6 +590,7 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
+awful.util.spawn_with_shell("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &")
 awful.util.spawn_with_shell("nm-applet &")
 awful.util.spawn_with_shell("xscreensaver -nosplash &")
 awful.util.spawn_with_shell("dropbox start")
