@@ -5,7 +5,7 @@
 
 (require 'taskjuggler-mode)
 
-(load-file "emacs/site-lisp/graphviz-dot-mode.el") 
+;; (load-file "emacs/site-lisp/graphviz-dot-mode.el") Loaded from packages
 
 (require 'epa)
 (epa-file-enable)

@@ -1,5 +1,5 @@
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
+;;                         ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
@@ -43,6 +43,6 @@ Return a list of installed packages or nil for every skipped package."
 
 (ensure-package-installed 'adoc-mode 'graphviz-dot-mode 'haml-mode 'lua-mode 'markdown-mode 'web-mode 'yaml-mode)
 
-(ensure-package-installed 'auto-complete 'company 'emacs-eclim 'smart-mode-line)
+(ensure-package-installed 'auto-complete 'company 'eclim 'company-emacs-eclim 'smart-mode-line)
 
 (ensure-package-installed 'zenburn-theme)

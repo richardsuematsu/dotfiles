@@ -21,9 +21,10 @@
 (add-hook 'ruby-mode-hook 'projectile-mode)
 
 
+;; autoload
 ;;golang
-(add-to-list 'load-path "go-mode-load.el" t)
-(require 'go-mode-load)
+;; (add-to-list 'load-path "go-mode-load.el" t)
+;; (require 'go-mode-load)
 
 ;;clojure
 (require 'clojure-mode)
